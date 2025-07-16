@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "author": "Gabriel Marcellino Sinurat",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -26.52,
+      "left": -235.5,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 26.1,
+      "left": 186.9,
+      "rotate": 90,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 102,
+      "left": 224.6,
+      "rotate": 90,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 138.35,
+      "left": 153.6,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 265.6,
+      "left": 72.8,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pir1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "esp:GND.1", "pir1:GND", "black", [ "h-119.81", "v-144.26" ] ],
+    [ "esp:14", "pir1:OUT", "gold", [ "h-129.41", "v-115.34" ] ],
+    [ "esp:GND.3", "bz1:2", "black", [ "h43.24", "v-28.8" ] ],
+    [ "led1:A", "r1:2", "gold", [ "v0" ] ],
+    [ "led1:C", "esp:GND.3", "black", [ "h-83.6", "v-35.6" ] ],
+    [ "r1:1", "esp:4", "gold", [ "v0" ] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [ "h-86.4", "v-144" ] ],
+    [ "lcd1:VCC", "esp:5V", "red", [ "h0" ] ],
+    [ "bz1:1", "esp:19", "gold", [ "h-67.2", "v48" ] ],
+    [ "lcd1:SDA", "esp:21", "gold", [ "h-19.2", "v-95.8", "h76.8", "v-153.6" ] ],
+    [ "lcd1:SCL", "esp:22", "orange", [ "h-28.8", "v-95.7", "h76.8", "v-182.4" ] ]
+  ],
+  "dependencies": {}
+}
